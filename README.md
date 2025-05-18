@@ -1,17 +1,17 @@
-# DSA-Daily-Practice
+# DSA-Daily-Practice 
 
 This repository contains a collection of my solutions to Data Structures and Algorithms problems, primarily implemented in Java. This repository serves as a personal learning log and practice ground for improving problem-solving skills in computer science fundamentals.
 
-* Arrays & Hashing(Arrays%20&%20Hashing)
-* Two Pointers(Two Pointers)
-* Sliding Window(Sliding%20Window)
-* Stack(Stack)
-* Searching(Searching)
-* Linked Lists(Linked%20Lists)
-* Trees(Trees)
-* Graphs(Graphs)
-* Backtracking(Backtracking)
-* Dynamic Programming(Dynamic%20Programming)
+* [Arrays & Hashing](Arrays%20&%20Hashing)
+* [Two Pointers](Two%20Pointers)
+* [Sliding Window](Sliding%20Window)
+* [Stack](Stack)
+* [Searching](Searching)
+* [Linked Lists](Linked%20Lists)
+* [Trees](Trees)
+* [Graphs](Graphs)
+* [Backtracking](Backtracking)
+* [Dynamic Programming](Dynamic%20Programming)
 
 ## Progress
 
@@ -28,5 +28,5 @@ Solutions are organized by DSA topic in separate folders. Each folder contains J
 
 ## Contact
 
-[GitHub](https://github.com/Haririshikesh/)
-[LinkedIn](https://github.com/Haririshikesh/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=ffffff)](https://github.com/Haririshikesh/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=ffffff)](https://www.linkedin.com/in/RishikeshKesavan/)
