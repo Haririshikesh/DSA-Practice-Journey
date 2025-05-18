@@ -2,13 +2,16 @@
 
 This repository contains a collection of my solutions to Data Structures and Algorithms problems, primarily implemented in Java. This repository serves as a personal learning log and practice ground for improving problem-solving skills in computer science fundamentals.
 
-* Arrays
-* Linked Lists
-* Sorting
-* Searching
-* Trees
-* Graphs
-* Dynamic Programming
+* Arrays & Hashing(Arrays%20&%20Hashing)
+* Two Pointers(Two Pointers)
+* Sliding Window(Sliding%20Window)
+* Stack(Stack)
+* Searching(Searching)
+* Linked Lists(Linked%20Lists)
+* Trees(Trees)
+* Graphs(Graphs)
+* Backtracking(Backtracking)
+* Dynamic Programming(Dynamic%20Programming)
 
 ## Progress
 
@@ -25,4 +28,5 @@ Solutions are organized by DSA topic in separate folders. Each folder contains J
 
 ## Contact
 
-[Your GitHub Profile Link](https://github.com/Haririshikesh/)
+[GitHub](https://github.com/Haririshikesh/)
+[LinkedIn](https://github.com/Haririshikesh/)
