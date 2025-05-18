@@ -91,7 +91,7 @@ class MaxAreaOfIsland {
         }
 
         return area;
-    }
+    } 
 
     // public static void main(String[] args) {
     //     Solution solution = new Solution();
