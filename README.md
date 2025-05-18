@@ -28,5 +28,5 @@ Solutions are organized by DSA topic in separate folders. Each folder contains J
 
 ## Contact
 
-[GitHub](https://github.com/Haririshikesh/)
-[LinkedIn](https://www.linkedin.com/in/RishikeshKesavan/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=ffffff)](https://github.com/Haririshikesh/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=ffffff)](https://www.linkedin.com/in/RishikeshKesavan/)
