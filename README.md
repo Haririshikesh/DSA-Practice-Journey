@@ -19,7 +19,6 @@ This repository contains a collection of my solutions to Data Structures and Alg
 |------------|--------------------------------------------------|-------------------------|
 | 2025-05-18 | Number Of Islands (Leetcode - 200)               | Graphs                  |
 | 2025-05-18 | Max Area of Island (Leetcode - 695)              | Graphs                  |
-| 2025-05-18 | Rotating Oranges (Leetcode - 994)                | Graphs                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
