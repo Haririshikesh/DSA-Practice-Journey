@@ -29,4 +29,4 @@ Solutions are organized by DSA topic in separate folders. Each folder contains J
 ## Contact
 
 [GitHub](https://github.com/Haririshikesh/)
-[LinkedIn](https://github.com/Haririshikesh/)
+[LinkedIn](https://www.linkedin.com/in/RishikeshKesavan/)
