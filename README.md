@@ -8,6 +8,7 @@ This repository contains a collection of my solutions to Data Structures and Alg
 * Stack(Stack)
 * Searching(Searching)
 * Linked Lists(Linked%20Lists)
+* [Trees](Trees)
 * Trees(Trees)
 * Graphs(Graphs)
 * Backtracking(Backtracking)
