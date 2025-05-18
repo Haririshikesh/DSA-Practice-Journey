@@ -12,7 +12,7 @@ This repository contains a collection of my solutions to Data Structures and Alg
 
 ## Progress
 
-| Date       | Problems Solved                                  | Topics Covered          |
+| Date       | Problems Solved 🔨💪🏼                               | Topics Covered          |
 |------------|--------------------------------------------------|-------------------------|
 | 2025-05-18 | Number Of Islands (Leetcode - 200)               | Graphs                  |
 | 2025-05-18 | Max Area of Island (Leetcode - 695)              | Graphs                  |
