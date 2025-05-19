@@ -17,8 +17,11 @@ This repository contains a collection of my solutions to Data Structures and Alg
 
 | Date       | Problems Solved 🔨💪🏼                               | Topics Covered          |
 |------------|--------------------------------------------------|-------------------------|
+| ...        | ... Day - Zero ...                               | ...                     |
 | 2025-05-18 | Number Of Islands (Leetcode - 200)               | Graphs                  |
 | 2025-05-18 | Max Area of Island (Leetcode - 695)              | Graphs                  |
+| ...        | ... Day - One ...                                | ...                     |
+| 2025-05-19 | Rotting Oranges (Leetcode - 994)                 | Graphs                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
@@ -29,3 +32,4 @@ Solutions are organized by DSA topic in separate folders. Each folder contains J
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=ffffff)](https://github.com/Haririshikesh/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=ffffff)](https://www.linkedin.com/in/RishikeshKesavan/)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=ffffff)](mailto:haririshikeshk2003@gmail.com)

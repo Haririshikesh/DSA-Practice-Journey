@@ -94,7 +94,7 @@ class MaxAreaOfIsland {
     } 
 
     // public static void main(String[] args) {
-    //     Solution solution = new Solution();
+    //     MaxAreaOfIsland maxAreaOfIsland = new MaxAreaOfIsland();
 
     //     // Example 1
     //     int[][] grid1 = new int[][]{
@@ -107,10 +107,10 @@ class MaxAreaOfIsland {
     //             {0,0,0,0,0,0,0,1,1,1,0,0,0},
     //             {0,0,0,0,0,0,0,1,1,0,0,0,0}
     //     };
-    //     System.out.println("Max area of island in grid1: " + solution.maxAreaOfIsland(grid1)); // Expected output: 6
+    //     System.out.println("Max area of island in grid1: " + maxAreaOfIsland.maxAreaOfIsland(grid1)); // Expected output: 6
 
     //     // Example 2
     //     int[][] grid2 = new int[][]{{0,0,0,0,0,0,0,0}};
-    //     System.out.println("Max area of island in grid2: " + solution.maxAreaOfIsland(grid2)); // Expected output: 0
+    //     System.out.println("Max area of island in grid2: " + maxAreaOfIsland.maxAreaOfIsland(grid2)); // Expected output: 0
     // }
 }

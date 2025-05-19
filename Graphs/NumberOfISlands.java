@@ -88,7 +88,7 @@ class NumberOfISlands {
     }
 
     // public static void main(String[] args) {
-    //     Solution solution = new Solution();
+    //     NumberOfISlands numberOfISlands = new NumberOfISlands();
 
     //     // Example 1
     //     char[][] grid1 = new char[][]{
@@ -97,7 +97,7 @@ class NumberOfISlands {
     //             {'1','1','0','0','0'},
     //             {'0','0','0','0','0'}
     //     };
-    //     System.out.println("Number of islands in grid1: " + solution.numIslands(grid1)); // Expected output: 1
+    //     System.out.println("Number of islands in grid1: " + numberOfISlands.numIslands(grid1)); // Expected output: 1
 
     //     // Example 2
     //     char[][] grid2 = new char[][]{
@@ -106,6 +106,6 @@ class NumberOfISlands {
     //             {'0','0','1','0','0'},
     //             {'0','0','0','1','1'}
     //     };
-    //     System.out.println("Number of islands in grid2: " + solution.numIslands(grid2)); // Expected output: 3
+    //     System.out.println("Number of islands in grid2: " + numberOfISlands.numIslands(grid2)); // Expected output: 3
     // }
 }
