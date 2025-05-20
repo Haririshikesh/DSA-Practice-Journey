@@ -15,13 +15,15 @@ This repository contains a collection of my solutions to Data Structures and Alg
 
 ## Progress
 
-| Date       | Problems Solved 🔨💪🏼                               | Topics Covered          |
+| Date       | Problems Solved 🔨💪🏼                            | Topics Covered          |
 |------------|--------------------------------------------------|-------------------------|
-| ...        | ... Day - Zero ...                               | ...                     |
+|            | ... Zero Day 1 ...                               |                         |
 | 2025-05-18 | Number Of Islands (Leetcode - 200)               | Graphs                  |
 | 2025-05-18 | Max Area of Island (Leetcode - 695)              | Graphs                  |
-| ...        | ... Day - One ...                                | ...                     |
+|            | ... Zero Day 2 ...                               |                         |
 | 2025-05-19 | Rotting Oranges (Leetcode - 994)                 | Graphs                  |
+| 2025-05-19 | Pacific Atlantic Water Flow (Leetcode - 417)     | Graphs                  |
+|            | ... Zero Day 3 ...                               |                         |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
