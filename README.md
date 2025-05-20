@@ -24,6 +24,7 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-19 | Rotting Oranges (Leetcode - 994)                 | Graphs                  |
 | 2025-05-19 | Pacific Atlantic Water Flow (Leetcode - 417)     | Graphs                  |
 |            | ... Zero Day 3 ...                               |                         |
+| 2025-05-19 | Surrounded Regions (Leetcode - 130)              | Graphs                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
