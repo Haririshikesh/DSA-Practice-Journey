@@ -25,6 +25,9 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-19 | Pacific Atlantic Water Flow (Leetcode - 417)     | Graphs                  |
 |            | ... Zero Day 3 ...                               |                         |
 | 2025-05-20 | Surrounded Regions (Leetcode - 130)              | Graphs                  |
+|            | ... Day 1...                                     |                         |
+| 2025-05-20 | Course Schedule (Leetcode - 207)                 | Graphs                  |
+| 2025-05-20 | Course Schedule - II (Leetcode - 210)            | Graphs                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
