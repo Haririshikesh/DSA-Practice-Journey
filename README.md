@@ -22,12 +22,19 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-18 | Max Area of Island (Leetcode - 695)              | Graphs                  |
 |            | ... Zero Day 2 ...                               |                         |
 | 2025-05-19 | Rotting Oranges (Leetcode - 994)                 | Graphs                  |
-| 2025-05-19 | Pacific Atlantic Water Flow (Leetcode - 417)     | Graphs                  |
 |            | ... Zero Day 3 ...                               |                         |
 | 2025-05-20 | Surrounded Regions (Leetcode - 130)              | Graphs                  |
 |            | ... Day 1...                                     |                         |
-| 2025-05-20 | Course Schedule (Leetcode - 207)                 | Graphs                  |
-| 2025-05-20 | Course Schedule - II (Leetcode - 210)            | Graphs                  |
+| 2025-05-21 | Pacific Atlantic Water Flow (Leetcode - 417)     | Graphs                  |
+|            | ... Day 2...                                     |                         |
+| 2025-05-22 | Course Schedule -IV (Leetcode - 1462)            | Graphs                  |
+|            | ... Day 3...                                     |                         |
+| 2025-05-23 | Redundant Connection (Leetcode - 684)            | Graphs                  |
+|            | ... Day 4...                                     |                         |
+| 2025-05-23 | Two Sum (REDO) (Leetcode -1)                     | Arrays                  |
+| 2025-05-23 | Contains Duplicate (REDO) (Leetcode -217)        | Arrays                  |
+| 2025-05-23 | Valid Anagram (REDO) (Leetcode -242)             | Arrays                  |
+| 2025-05-23 | Concatenation Of Array (REDO) (Leetcode -1929)   | Arrays                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
