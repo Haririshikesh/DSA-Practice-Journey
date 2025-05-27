@@ -43,9 +43,9 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-26 | Majority Element(REDO) (Leetcode -169)           | Arrays                  |
 | 2025-05-26 | Accounts Merge (Leetcode -721)             | Graphs                  |
 |            | ... Day 7...                                     |                         |
-| 2025-05-27 | Remove Element(REDO) (Leetcode -27)              | Arrays                  |
-| 2025-05-27 | Majority Element(REDO) (Leetcode -169)           | Arrays                  |
-| 2025-05-26 | Accounts Merge(REDO) (Leetcode -721)             | Graphs                  |
+| 2025-05-27 | Design HashSet(REDO) (Leetcode -705)             | Arrays                  |
+| 2025-05-27 | Sort Array -Single Pivot Quick Sort(TLE)(LC- 912)| Arrays                  |
+| 2025-05-27 | Sort Array -Dual Pivot Quick Sort(TLE)(LC- 912)  | Arrays                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
