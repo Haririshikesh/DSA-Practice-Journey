@@ -35,9 +35,17 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-24 | Contains Duplicate (REDO) (Leetcode -217)        | Arrays                  |
 | 2025-05-24 | Valid Anagram (REDO) (Leetcode -242)             | Arrays                  |
 | 2025-05-24 | Concatenation Of Array (REDO) (Leetcode -1929)   | Arrays                  |
-|            | ... Day 4...                                     |                         |
+|            | ... Day 5...                                     |                         |
 | 2025-05-25 | Longest Common Prefix (REDO) (Leetcode -14)      | Arrays                  |
 | 2025-05-25 | Group Anagrams (REDO) (Leetcode -49)             | Arrays                  |
+|            | ... Day 6...                                     |                         |
+| 2025-05-26 | Remove Element(REDO) (Leetcode -27)              | Arrays                  |
+| 2025-05-26 | Majority Element(REDO) (Leetcode -169)           | Arrays                  |
+| 2025-05-26 | Accounts Merge (Leetcode -721)             | Graphs                  |
+|            | ... Day 7...                                     |                         |
+| 2025-05-27 | Remove Element(REDO) (Leetcode -27)              | Arrays                  |
+| 2025-05-27 | Majority Element(REDO) (Leetcode -169)           | Arrays                  |
+| 2025-05-26 | Accounts Merge(REDO) (Leetcode -721)             | Graphs                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
