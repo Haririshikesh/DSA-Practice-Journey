@@ -50,6 +50,7 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-28 | Evaluate Division (Leetcode -399)                | Graphs                  |
 |            | ... Day 9...                                     |                         |
 | 2025-05-29 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
+| 2025-05-29 | Top K Frequent Elements (Leetcode -347)          | Arrays                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
