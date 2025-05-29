@@ -46,6 +46,10 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-27 | Design HashSet(REDO) (Leetcode -705)             | Arrays                  |
 | 2025-05-27 | Sort Array -Single Pivot Quick Sort(TLE)(LC- 912)| Arrays                  |
 | 2025-05-27 | Sort Array -Dual Pivot Quick Sort(TLE)(LC- 912)  | Arrays                  |
+|            | ... Day 8...                                     |                         |
+| 2025-05-28 | Evaluate Division (Leetcode -399)                | Graphs                  |
+|            | ... Day 9...                                     |                         |
+| 2025-05-29 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
