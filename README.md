@@ -51,6 +51,14 @@ This repository contains a collection of my solutions to Data Structures and Alg
 |            | ... Day 9...                                     |                         |
 | 2025-05-29 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
 | 2025-05-29 | Top K Frequent Elements (Leetcode -347)          | Arrays                  |
+|            | ... Day 10...                                    |                         |
+| 2025-05-30 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
+|            | ... Day 11...                                     |                         |
+| 2025-05-31 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
+|            | ... Day 12...                                     |                         |
+| 2025-05-01 | Linked List Cycle (REDD) (Leetcode -141)                | LinkedList                  |
+|            | ... Day 13...                                     |                         |
+| 2025-05-02 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
