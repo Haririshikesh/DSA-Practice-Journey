@@ -53,12 +53,19 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-05-29 | Top K Frequent Elements (Leetcode -347)          | Arrays                  |
 |            | ... Day 10...                                    |                         |
 | 2025-05-30 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
-|            | ... Day 11...                                     |                         |
+|            | ... Day 11...                                    |                         |
 | 2025-05-31 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
-|            | ... Day 12...                                     |                         |
-| 2025-05-01 | Linked List Cycle (REDD) (Leetcode -141)                | LinkedList                  |
-|            | ... Day 13...                                     |                         |
+|            | ... Day 12...                                    |                         |
+| 2025-05-01 | Linked List Cycle (REDD) (Leetcode -141)         | LinkedList              |
+|            | ... Day 13...                                    |                         |
 | 2025-05-02 | Minimum Height Tree (Leetcode -310)              | Graphs                  |
+|            | ... Syncing Up Progress...                       |                         |
+|            | ... Day 14...                                    |                         |
+| 2025-06-16 | Reverse Linked List (REDD) (Leetcode -206)       | LinkedList              |
+| 2025-06-16 | Merge Two Sorted Lists (REDD) (Leetcode -21)     | LinkedList              |
+| 2025-06-16 | Add Two Numbers (Leetcode -2)                    | LinkedList              |
+|            | ... Day 15...                                    |                         |
+| 2025-06-17 | Reverse Linked List (Leetcode -206)              | LinkedList              |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
