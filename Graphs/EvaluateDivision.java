@@ -1,335 +1,335 @@
-import java.util.ArrayList;
-import java.util.Arrays; // For Arrays.toString in main method
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set; // More specific than java.util.HashSet
+// LeetCode Problem: Evaluate Division
+// Problem Link: https://leetcode.com/problems/evaluate-division/
 
-/*
-Problem Title: Evaluate Division
-Problem Link: [https://leetcode.com/problems/evaluate-division/](https://leetcode.com/problems/evaluate-division/)
+// This file contains the Java solution for the Evaluate Division problem on LeetCode.
+// The problem asks us to evaluate division queries given a set of equations and their corresponding values.
+// We can model this problem as a graph where variables are nodes and the division results are edge weights.
 
-Problem Description:
-You are given an array of variable pairs `equations` and an array of real numbers `values`, where `equations[i] = [Ai, Bi]` and `values[i]` represent the equation `Ai / Bi = values[i]`. Each `Ai` or `Bi` is a string that represents a single variable.
+import java.util.*;
 
-You are also given an array of queries, where `queries[j] = [Cj, Dj]` represents the `j-th` query for which you should find the answer `Cj / Dj = ?`.
+// class Solution {
+//     /**
+//      * Calculates the results of division queries based on given equations.
+//      *
+//      * @param equations A list of pairs of strings representing the equations (e.g., [["a", "b"], ["b", "c"]]).
+//      * @param values An array of doubles representing the values of the equations (e.g., [2.0, 3.0] for a/b=2.0, b/c=3.0).
+//      * @param queries A list of pairs of strings representing the queries to evaluate (e.g., [["a", "c"], ["b", "a"]]).
+//      * @return An array of doubles where each element is the result of the corresponding query.
+//      * Returns -1.0 if a query cannot be evaluated.
+//      */
+//     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
+//         // Step 1: Build the graph from the given equations and values.
+//         // The graph will store variables as nodes and the division results as edge weights.
+//         HashMap<String, HashMap<String, Double>> grp = buildGraph(equations, values);
 
-Return the answers to all queries. If a single answer cannot be determined, return -1.0.
+//         // Initialize the result array for the queries.
+//         double[] res = new double[queries.size()];
 
-Note: The input equations form a directed graph. The nodes are variables, and the edges are division relationships. For example, A/B = 2.0 creates a directed edge from A to B with weight 2.0, and implicitly an edge from B to A with weight 1/2.0.
+//         // Step 2: Process each query.
+//         for(int i = 0; i < queries.size(); i++){
+//             String divisor = queries.get(i).get(0);    // The numerator of the query
+//             String dividend = queries.get(i).get(1);   // The denominator of the query
 
-Example 1:
-Input: equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
-Output: [6.00000,0.50000,-1.00000,1.00000,-1.00000]
-Explanation:
-Given: a / b = 2.0, b / c = 3.0
-queries are:
-a / c = (a / b) * (b / c) = 2.0 * 3.0 = 6.0
-b / a = 1 / (a / b) = 1 / 2.0 = 0.5
-a / e = -1.0 (e is not defined)
-a / a = 1.0 (same variable)
-x / x = -1.0 (x is not defined)
+//             // Check if both the divisor and dividend exist in our graph.
+//             // If either is not present, it means we cannot evaluate the query.
+//             if(!grp.containsKey(divisor) || !grp.containsKey(dividend) ){
+//                 res[i] = -1.0;
+//             } else {
+//                 // Use a HashSet to keep track of visited nodes during DFS to prevent cycles.
+//                 HashSet<String> vis = new HashSet<>();
+//                 // Use a single-element array to store the result of the DFS.
+//                 // This allows the DFS function to update a value that's visible to the caller.
+//                 double ans[] = {-1.0};
+//                 // 'temp' variable stores the cumulative product of edge weights along the DFS path.
+//                 double temp = 1.0;
 
-Example 2:
-Input: equations = [["a","b"]], values = [0.5], queries = [["a","b"],["b","a"],["a","c"],["x","y"]]
-Output: [0.50000,2.00000,-1.00000,-1.00000]
+//                 // Perform DFS to find the path from divisor to dividend and calculate the product.
+//                 dfs(divisor, dividend, grp, vis, ans , temp);
+//                 res[i] = ans[0]; // Store the calculated result for the current query.
+//             }
+//         }
+//         return res;
+//     }
 
-Example 3:
-Input: equations = [["a","b"],["b","c"],["bc","cd"]], values = [1.0,1.0,1.0], queries = [["a","c"],["c","f"],["bc","cd"],["cd","bc"]]
-Output: [1.00000,-1.00000,1.00000,1.00000]
+//     /**
+//      * Builds a graph representing the relationships between variables from the given equations.
+//      * Each node in the graph is a variable (String), and edges represent the division result.
+//      * For an equation a/b = value, an edge from 'a' to 'b' with weight 'value' is created,
+//      * and an edge from 'b' to 'a' with weight '1.0 / value' is also created.
+//      *
+//      * @param equations A list of equations.
+//      * @param values An array of corresponding values for the equations.
+//      * @return A HashMap representing the graph. Outer HashMap maps a variable to an inner HashMap.
+//      * The inner HashMap maps an adjacent variable to the edge weight (division result).
+//      */
+//     public HashMap<String, HashMap<String, Double>> buildGraph (List<List<String>> equations, double[] values){
+//         HashMap<String, HashMap<String, Double>> grp = new HashMap<>();
 
-Constraints:
-- 1 <= equations.length <= 100
-- equations[i].length == 2
-- 1 <= Ai.length, Bi.length <= 5
-- values.length == equations.length
-- 0.0 < values[i] <= 20.0
-- 1 <= queries.length <= 100
-- queries[j].length == 2
-- 1 <= Cj.length, Dj.length <= 5
-- Ai, Bi, Cj, Dj consist of lowercase English letters and digits.
+//         for(int i = 0; i < equations.size(); i++){
+//             String dividend = equations.get(i).get(0); // Numerator
+//             String divisor = equations.get(i).get(1);  // Denominator
 
-Initial Intuition:
-The problem inherently describes a graph where variables are nodes and the division relationships are weighted, directed edges. If we have `A / B = k`, we can think of this as an edge from `A` to `B` with weight `k`. We also know that `B / A = 1/k`, so there's an inverse edge from `B` to `A` with weight `1/k`. To find `C / D`, we need to find a path from `C` to `D` in this graph and multiply the edge weights along that path. This is a classic graph traversal problem (like finding a path in a graph and calculating a product).
+//             // Ensure both dividend and divisor nodes exist in the graph.
+//             grp.putIfAbsent(dividend, new HashMap<>());
+//             grp.putIfAbsent(divisor, new HashMap<>());
 
-Approach: Graph Traversal (DFS)
-We can model the variables as nodes in a graph and the division relationships as directed edges with associated weights. For each query, we perform a Depth-First Search (DFS) starting from the `dividend` variable and trying to reach the `divisor` variable. During the DFS, we accumulate the product of edge weights along the path.
+//             // Add edge for dividend / divisor = values[i]
+//             grp.get(dividend).put(divisor, values[i]);
+//             // Add inverse edge for divisor / dividend = 1.0 / values[i]
+//             grp.get(divisor).put(dividend, 1.0 / values[i]);
+//         }
+//         return grp;
+//     }
 
-Detailed Explanation of the Algorithm:
+//     /**
+//      * Performs a Depth-First Search (DFS) to find a path from a starting node to a destination node
+//      * in the graph and calculates the cumulative product of edge weights along that path.
+//      *
+//      * @param node The current node in the DFS traversal.
+//      * @param destination The target node we are trying to reach.
+//      * @param grp The graph representation.
+//      * @param vis A set to keep track of visited nodes to avoid cycles.
+//      * @param ans A single-element array to store the final calculated answer.
+//      * It is updated when the destination is reached.
+//      * @param temp The cumulative product of edge weights from the starting node to the current 'node'.
+//      */
+//     public void dfs(String node, String destination, HashMap<String, HashMap<String, Double>> grp, HashSet<String> vis, double[] ans, double temp){
+//         // If the current node has already been visited in the current path, return to avoid cycles.
+//         if(vis.contains(node)) return;
 
-1.  **Build the Graph (`buildGraph` method):**
-    * The graph will be represented using a `HashMap<String, HashMap<String, Double>>`.
-        * The outer `HashMap` maps a variable (String) to its neighbors.
-        * The inner `HashMap` maps a neighbor variable (String) to the double value of the division (the edge weight). So, `graph.get("A").get("B")` would give the value of `A / B`.
-    * Iterate through the `equations` and `values` arrays:
-        * For each `equation[i] = [dividend_str, divisor_str]` and `value = values[i]`:
-        * Add `dividend_str` and `divisor_str` as keys to the main graph `HashMap` if they don't already exist, initializing their inner `HashMap`s.
-        * Add a directed edge from `dividend_str` to `divisor_str` with weight `value`: `graph.get(dividend_str).put(divisor_str, value)`.
-        * Crucially, also add the inverse directed edge from `divisor_str` to `dividend_str` with weight `1.0 / value`: `graph.get(divisor_str).put(dividend_str, 1.0 / value)`. This makes the graph effectively bidirectional with inverse weights.
+//         // Mark the current node as visited.
+//         vis.add(node);
 
-2.  **Process Queries (`calcEquation` method):**
-    * Initialize a `double[]` array `res` to store the answers for all queries.
-    * For each query `[divisor_q, dividend_q]` in `queries`:
-        * **Check for Unknown Variables:** First, check if both the `divisor_q` and `dividend_q` variables exist as nodes in our built graph. If either is not present, it means the value cannot be determined. Set `res[i] = -1.0`.
-        * **Handle Self-Division:** If `divisor_q` is the same as `dividend_q`, the result is always `1.0`. Set `res[i] = 1.0`. (This case is implicitly handled by DFS if a path exists, but it's a quick shortcut).
-        * **Perform DFS:**
-            * Initialize a `HashSet<String> visited` to keep track of nodes visited during the *current* DFS path. This prevents infinite loops in case of cycles and ensures we don't re-explore paths.
-            * Use a `double[] ans = {-1.0}`. This is a common pattern in recursive DFS in Java to effectively "return" a value that gets updated deep in the recursion, as primitive types are passed by value. `ans[0]` will store the final result if a path is found.
-            * Call the `dfs` helper function: `dfs(divisor_q, dividend_q, grp, visited, ans, 1.0)`. The `1.0` is the initial accumulated product.
-            * Store the result from `ans[0]` into `res[i]`.
+//         // If the current node is the destination, we have found a path.
+//         // Update the 'ans' array with the cumulative product 'temp'.
+//         // And then return, as we found our answer.
+//         if(node.equals(destination)){
+//             ans[0] = temp;
+//             return;
+//         }
 
-3.  **DFS Helper (`dfs` method):**
-    * `node`: The current variable (node) being visited.
-    * `destination`: The target variable (node) we are trying to reach.
-    * `graph`: The adjacency list representation of the graph.
-    * `visited`: A `Set` to keep track of nodes visited in the current path to prevent cycles.
-    * `result`: The `double[]` array to store the final result if found.
-    * `currentProduct`: The accumulated product of edge weights from the `start` node to `node`.
-    * **Base Cases:**
-        * If `visited.contains(node)`: The node has already been visited in this path, indicating a cycle or a redundant path. Stop exploration.
-        * If `node.equals(destination)`: The destination has been reached. Set `result[0] = currentProduct` and return.
-    * **Recursive Step:**
-        * Mark `node` as `visited`.
-        * Iterate through all neighbors of `node` from `graph.get(node).entrySet()`:
-            * For each `neighbor_str` (key) and its `edge_weight` (value):
-                * Recursively call `dfs(neighbor_str, destination, graph, visited, result, currentProduct * edge_weight)`.
-                * **Early Exit Optimization:** If `result[0]` is no longer `-1.0` after a recursive call, it means a path to the destination has been found through that branch. We can immediately return to avoid unnecessary further exploration. This is implicit in the provided code's `if(ans[0]!=-1.0)` not being present, but DFS generally explores all paths if an answer isn't set. The implicit return is from the base case.
+//         // Iterate over all neighbors of the current node.
+//         // Check if the current node exists in the graph. This handles cases where a node in a query
+//         // might not be part of any equation given, although this is checked earlier in calcEquation.
+//         if (grp.containsKey(node)) {
+//             for(Map.Entry<String,Double> entry: grp.get(node).entrySet()){
+//                 String key = entry.getKey();     // Neighboring node
+//                 double value = entry.getValue(); // Edge weight to the neighboring node
 
-Time Complexity: O(N_vars + E + Q * (N_vars + E))
-Let `N_vars` be the number of unique variables (nodes in the graph).
-Let `E` be the number of unique equations (edges in the graph).
-Let `Q` be the number of queries.
+//                 // Recursively call DFS for the neighbor, updating the cumulative product 'temp'.
+//                 // Only proceed if a solution hasn't already been found. This optimization can prune redundant searches
+//                 // if multiple paths exist and one has already found the destination.
+//                 if (ans[0] == -1.0) { // Check if a path to destination has been found
+//                     dfs(key, destination, grp, vis, ans, temp * value);
+//                 }
+//             }
+//         }
+//     }
+// }
 
--   **Building the graph:** O(E)
-    -   Each equation involves constant time operations for `HashMap.putIfAbsent` and `HashMap.put` (on average). There are `E` equations.
--   **Processing each query:** O(N_vars + E) in the worst case for each DFS.
-    -   In the worst case, a DFS might explore every node and every edge reachable from the starting node.
-    -   There are `Q` queries.
--   **Total Time Complexity:** O(E + Q * (N_vars + E)). Since `N_vars` can be up to `2 * E` (if every equation has new variables), and `E` is max 100, `N_vars` is max 200. `Q` is max 100. So, `100 + 100 * (200 + 100)` approximately `100 + 100 * 300 = 30100` operations, which is efficient.
-
-Space Complexity: O(N_vars + E)
--   **Graph representation (`grp`):**
-    -   Stores `N_vars` unique variables (outer HashMap keys).
-    -   Stores `2 * E` entries in the inner HashMaps (for `A/B` and `B/A`). Each entry involves storing a string and a double.
-    -   Therefore, graph storage is O(N_vars + E).
--   **`visited` set during DFS:** In the worst case, a path could include all `N_vars` nodes. So, O(N_vars).
--   **Recursion stack for DFS:** In the worst case, the recursion depth could be `N_vars`. So, O(N_vars).
--   `res` array: O(Q).
--   Overall space complexity is dominated by the graph representation, which is O(N_vars + E).
-
-```java
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set; 
-// More specific than java.util.HashSet
-
+// The uncommented solution class for LeetCode submission:
 class Solution {
-
-    /**
-     * Main method to calculate division results for given queries.
-     *
-     * @param equations A list of variable pairs (e.g., [["a","b"]]).
-     * @param values    Corresponding values for the equations (e.g., a/b = 2.0).
-     * @param queries   A list of variable pairs for which to find the division result.
-     * @return An array of doubles representing the results for each query.
-     */
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        // Step 1: Build the graph from equations and values.
-        // The graph stores variables as nodes and division values as edge weights.
-        // grp.get(A).get(B) represents A / B.
-        HashMap<String, HashMap<String, Double>> graph = buildGraph(equations, values);
-
-        // Array to store results for each query.
-        double[] results = new double[queries.size()];
-
-        // Step 2: Process each query.
-        for (int i = 0; i < queries.size(); i++) {
-            String startNode = queries.get(i).get(0); // The numerator/dividend
-            String endNode = queries.get(i).get(1);   // The denominator/divisor
-
-            // Edge Case 1: If either variable is not in the graph (never appeared in equations).
-            if (!graph.containsKey(startNode) || !graph.containsKey(endNode)) {
-                results[i] = -1.0;
-            }
-            // Edge Case 2: If the start and end nodes are the same, result is 1.0 (e.g., a/a = 1.0).
-            // This case is implicitly handled by DFS if a path exists, but it's a quick shortcut.
-            else if (startNode.equals(endNode)) {
-                results[i] = 1.0;
-            }
-            // Step 3: Perform DFS to find the path and calculate the product.
-            else {
-                // visited set for the current DFS path to prevent cycles.
-                Set<String> visited = new HashSet<>();
-                // ans[0] will store the result from DFS. Initialized to -1.0 (not found).
-                double[] ansContainer = {-1.0};
-                // Initial product is 1.0.
-                double currentProduct = 1.0;
-
-                // Start DFS from startNode to endNode.
-                dfs(startNode, endNode, graph, visited, ansContainer, currentProduct);
-                results[i] = ansContainer[0]; // Store the found result (or -1.0 if no path).
+        HashMap<String, HashMap<String, Double>> grp = buildGraph(equations, values);
+        double[] res = new double[queries.size()];
+        for(int i=0; i<queries.size(); i++){
+            String divisor = queries.get(i).get(0);
+            String dividend = queries.get(i).get(1);
+            if(!grp.containsKey(divisor) || !grp.containsKey(dividend) ){
+                res[i] = -1.0;
+            } else {
+                HashSet<String> vis = new HashSet<>();
+                double ans[] = {-1.0};
+                double temp = 1.0;
+                dfs(divisor, dividend, grp, vis, ans , temp);
+                res[i] = ans[0];
             }
         }
-        return results;
+        return res;        
     }
-
-    /**
-     * Builds the graph representation from the given equations and values.
-     *
-     * @param equations List of equations [numerator, denominator].
-     * @param values    Values corresponding to the equations.
-     * @return A HashMap representing the graph, where graph.get(A).get(B) = A/B.
-     */
-    public HashMap<String, HashMap<String, Double>> buildGraph(List<List<String>> equations, double[] values) {
-        HashMap<String, HashMap<String, Double>> graph = new HashMap<>();
-
-        for (int i = 0; i < equations.size(); i++) {
+    public HashMap<String, HashMap<String, Double>> buildGraph (List<List<String>> equations, double[] values){
+        HashMap<String, HashMap<String, Double>> grp = new HashMap<>();
+        for(int i=0; i<equations.size(); i++){
             String dividend = equations.get(i).get(0);
             String divisor = equations.get(i).get(1);
-            double value = values[i];
-
-            // Add nodes to the graph if they don't exist.
-            graph.putIfAbsent(dividend, new HashMap<>());
-            graph.putIfAbsent(divisor, new HashMap<>());
-
-            // Add edge: dividend -> divisor with weight 'value' (dividend / divisor = value).
-            graph.get(dividend).put(divisor, value);
-            // Add inverse edge: divisor -> dividend with weight '1.0 / value' (divisor / dividend = 1/value).
-            graph.get(divisor).put(dividend, 1.0 / value);
+            grp.putIfAbsent(dividend, new HashMap<>());
+            grp.putIfAbsent(divisor, new HashMap<>());
+            grp.get(dividend).put(divisor, values[i]);
+            grp.get(divisor).put(dividend, 1.0 / values[i]);
         }
-        return graph;
+        return grp;
     }
-
-    /**
-     * Performs a Depth-First Search to find a path from 'currentNode' to 'destination'
-     * and calculate the product of edge weights along the path.
-     *
-     * @param currentNode    The current node in the DFS traversal.
-     * @param destination    The target node to reach.
-     * @param graph          The graph representation.
-     * @param visited        A set to keep track of visited nodes in the current path.
-     * @param resultContainer An array to store the result (passed by reference).
-     * @param currentProduct The product of edge weights accumulated so far from the start node to 'currentNode'.
-     */
-    public void dfs(String currentNode, String destination, HashMap<String, HashMap<String, Double>> graph,
-                    Set<String> visited, double[] resultContainer, double currentProduct) {
-
-        // Base Case 1: If the node has already been visited in this path, avoid cycles.
-        if (visited.contains(currentNode)) {
+    public void dfs(String node, String destination, HashMap<String, HashMap<String, Double>> grp, HashSet<String> vis, double[] ans, double temp){
+        if(vis.contains(node)) return;
+        vis.add(node);
+        if(node.equals(destination)){
+            ans[0] = temp;
             return;
         }
-
-        // Base Case 2: If we reached the destination, store the current product and return.
-        if (currentNode.equals(destination)) {
-            resultContainer[0] = currentProduct;
-            return;
-        }
-
-        // Mark the current node as visited for this path.
-        visited.add(currentNode);
-
-        // Explore neighbors.
-        // The problem implies a single solution if a path exists, so we don't need to backtrack 'visited'
-        // or clear it if a path is found. Once resultContainer[0] is set, subsequent calls will not modify it.
-        // However, it's a good practice to ensure `resultContainer[0]` is checked as an early exit condition.
-        for (Map.Entry<String, Double> neighborEntry : graph.get(currentNode).entrySet()) {
-            String neighborNode = neighborEntry.getKey();
-            double edgeWeight = neighborEntry.getValue();
-
-            // If a result has already been found in a previous recursive call, stop further exploration.
-            if (resultContainer[0] != -1.0) {
-                 return; // An answer was found deeper in the recursion, propagate return.
+        if (grp.containsKey(node)) { // Added null check for safety, though graph construction should prevent this.
+            for(Map.Entry<String,Double> entry: grp.get(node).entrySet()){
+                String key = entry.getKey();
+                double value = entry.getValue();
+                // Optimization: only continue DFS if a valid path hasn't been found yet
+                if (ans[0] == -1.0) {
+                    dfs(key, destination, grp, vis, ans, temp * value);
+                }
             }
-
-            dfs(neighborNode, destination, graph, visited, resultContainer, currentProduct * edgeWeight);
         }
-
-        // Backtrack: Remove the current node from visited AFTER all its neighbors are explored
-        // and its branch of the DFS is finished. This is crucial if multiple paths might
-        // originate from the same node and need to use the same intermediate node later.
-        // For this specific problem structure and a single result, it's less critical for correctness,
-        // but good practice for general DFS.
-        visited.remove(currentNode);
     }
+}
 
-    /*
+// Example Usage and Main Method:
+// This section demonstrates how to use the Solution class with sample inputs.
+// It's commented out to ensure the file is clean for LeetCode submission,
+// but you can uncomment it to run and test locally.
+
+/*
+public class Main {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution sol = new Solution();
 
         // Example 1
-        List<List<String>> eq1 = Arrays.asList(Arrays.asList("a", "b"), Arrays.asList("b", "c"));
-        double[] val1 = {2.0, 3.0};
-        List<List<String>> q1 = Arrays.asList(
-                Arrays.asList("a", "c"),
-                Arrays.asList("b", "a"),
-                Arrays.asList("a", "e"),
-                Arrays.asList("a", "a"),
-                Arrays.asList("x", "x")
-        );
-        double[] res1 = solution.calcEquation(eq1, val1, q1);
-        System.out.println("Result for Example 1: " + Arrays.toString(res1));
-        // Expected: [6.0, 0.5, -1.0, 1.0, -1.0]
+        List<List<String>> equations1 = new ArrayList<>();
+        equations1.add(Arrays.asList("a", "b"));
+        equations1.add(Arrays.asList("b", "c"));
+        double[] values1 = {2.0, 3.0};
+        List<List<String>> queries1 = new ArrayList<>();
+        queries1.add(Arrays.asList("a", "c"));
+        queries1.add(Arrays.asList("b", "a"));
+        queries1.add(Arrays.asList("a", "e"));
+        queries1.add(Arrays.asList("a", "a"));
+        queries1.add(Arrays.asList("x", "x"));
 
-        System.out.println("\n--- Next Test ---");
-        // Reset solution for next test because graph is built per call, no instance variables to reset here.
+        System.out.println("Example 1:");
+        double[] results1 = sol.calcEquation(equations1, values1, queries1);
+        for (double res : results1) {
+            System.out.printf("%.5f ", res);
+        }
+        System.out.println("\nExpected: 6.00000 0.50000 -1.00000 1.00000 -1.00000\n");
 
         // Example 2
-        List<List<String>> eq2 = Arrays.asList(Arrays.asList("a", "b"));
-        double[] val2 = {0.5};
-        List<List<String>> q2 = Arrays.asList(
-                Arrays.asList("a", "b"),
-                Arrays.asList("b", "a"),
-                Arrays.asList("a", "c"),
-                Arrays.asList("x", "y")
-        );
-        double[] res2 = solution.calcEquation(eq2, val2, q2);
-        System.out.println("Result for Example 2: " + Arrays.toString(res2));
-        // Expected: [0.5, 2.0, -1.0, -1.0]
+        List<List<String>> equations2 = new ArrayList<>();
+        equations2.add(Arrays.asList("a", "b"));
+        equations2.add(Arrays.asList("b", "c"));
+        equations2.add(Arrays.asList("bc", "cd"));
+        double[] values2 = {1.0, 1.0, 1.0};
+        List<List<String>> queries2 = new ArrayList<>();
+        queries2.add(Arrays.asList("a", "c"));
+        queries2.add(Arrays.asList("c", "b"));
+        queries2.add(Arrays.asList("bc", "cd"));
+        queries2.add(Arrays.asList("cd", "bc"));
 
-        System.out.println("\n--- Next Test ---");
+        System.out.println("Example 2:");
+        double[] results2 = sol.calcEquation(equations2, values2, queries2);
+        for (double res : results2) {
+            System.out.printf("%.5f ", res);
+        }
+        System.out.println("\nExpected: 1.00000 1.00000 1.00000 1.00000\n");
 
         // Example 3
-        List<List<String>> eq3 = Arrays.asList(
-                Arrays.asList("a", "b"),
-                Arrays.asList("b", "c"),
-                Arrays.asList("bc", "cd")
-        );
-        double[] val3 = {1.0, 1.0, 1.0};
-        List<List<String>> q3 = Arrays.asList(
-                Arrays.asList("a", "c"),
-                Arrays.asList("c", "f"),
-                Arrays.asList("bc", "cd"),
-                Arrays.asList("cd", "bc")
-        );
-        double[] res3 = solution.calcEquation(eq3, val3, q3);
-        System.out.println("Result for Example 3: " + Arrays.toString(res3));
-        // Expected: [1.0, -1.0, 1.0, 1.0]
+        List<List<String>> equations3 = new ArrayList<>();
+        equations3.add(Arrays.asList("a", "b"));
+        double[] values3 = {0.5};
+        List<List<String>> queries3 = new ArrayList<>();
+        queries3.add(Arrays.asList("a", "b"));
+        queries3.add(Arrays.asList("b", "a"));
+        queries3.add(Arrays.asList("a", "c"));
+        queries3.add(Arrays.asList("c", "a"));
 
-        System.out.println("\n--- Next Test ---");
-
-        // Custom Test Case: Disconnected components and more complex path
-        List<List<String>> eq4 = Arrays.asList(
-                Arrays.asList("x", "y"),
-                Arrays.asList("y", "z"),
-                Arrays.asList("u", "v"),
-                Arrays.asList("v", "w")
-        );
-        double[] val4 = {2.0, 3.0, 4.0, 5.0};
-        List<List<String>> q4 = Arrays.asList(
-                Arrays.asList("x", "z"),   // 2*3 = 6
-                Arrays.asList("x", "w"),   // -1.0 (disconnected)
-                Arrays.asList("u", "w"),   // 4*5 = 20
-                Arrays.asList("y", "u"),   // -1.0 (disconnected)
-                Arrays.asList("x", "x")    // 1.0
-        );
-        double[] res4 = solution.calcEquation(eq4, val4, q4);
-        System.out.println("Result for Custom Test 4: " + Arrays.toString(res4));
-        // Expected: [6.0, -1.0, 20.0, -1.0, 1.0]
+        System.out.println("Example 3:");
+        double[] results3 = sol.calcEquation(equations3, values3, queries3);
+        for (double res : results3) {
+            System.out.printf("%.5f ", res);
+        }
+        System.out.println("\nExpected: 0.50000 2.00000 -1.00000 -1.00000\n");
     }
-    */
 }
+*/
+
+/*
+Problem Explanation:
+
+The "Evaluate Division" problem asks us to determine the results of division queries given a set of equations. Each equation involves two variables and their ratio. For example, if we are given `a / b = 2.0` and `b / c = 3.0`, we might be asked to find `a / c` or `c / a`.
+
+The core idea is to model this problem as a graph. Each variable (e.g., 'a', 'b', 'c') can be considered a node in the graph. An equation like `a / b = 2.0` can be represented as a directed edge from 'a' to 'b' with a weight of `2.0`. Crucially, we also know that `b / a = 1.0 / 2.0 = 0.5`, so we'll also add a directed edge from 'b' to 'a' with a weight of `0.5`. This makes our graph undirected in a sense, but with directional weights.
+
+To answer a query like `a / c`, we need to find a path from node 'a' to node 'c' in this graph. If a path exists, say `a -> b -> c`, then the value of `a / c` would be the product of the edge weights along this path: `(a / b) * (b / c)`. In our example, `2.0 * 3.0 = 6.0`.
+
+Approach:
+
+1.  **Graph Construction:**
+    * We use an `Adjacency List` representation for our graph. A `HashMap<String, HashMap<String, Double>>` is suitable:
+        * The outer `HashMap` maps a variable (String) to another `HashMap`.
+        * The inner `HashMap` maps an adjacent variable (String) to the `Double` value representing the division result (edge weight).
+    * For each equation `equations[i] = [numerator, denominator]` with `values[i]`, we add two edges:
+        * `graph.get(numerator).put(denominator, values[i])`
+        * `graph.get(denominator).put(numerator, 1.0 / values[i])`
+    * We use `putIfAbsent` to ensure that a new inner HashMap is created for a variable if it's encountered for the first time.
+
+2.  **Query Processing (DFS/BFS):**
+    * For each query `[queryNumerator, queryDenominator]`:
+    * **Check for existence:** First, check if both `queryNumerator` and `queryDenominator` exist as nodes in our constructed graph. If either is missing, it means we have no information about this variable, and thus the query cannot be evaluated. In this case, the result is `-1.0`.
+    * **Pathfinding (DFS):** If both nodes exist, we perform a Depth-First Search (DFS) starting from `queryNumerator` to find `queryDenominator`.
+        * During the DFS, we maintain a `currentProduct` (initialized to `1.0` for the starting node) which accumulates the product of edge weights along the current path.
+        * We also need a `visited` set to prevent infinite loops in case of cycles in the graph (e.g., `a/b=2, b/a=0.5`).
+        * When the DFS reaches the `queryDenominator`, the `currentProduct` at that point is the answer for the query.
+        * If the DFS completes without reaching the `queryDenominator` (meaning no path exists), the answer remains `-1.0`.
+
+**Detailed DFS Logic:**
+
+The `dfs` function takes:
+* `node`: The current node being visited.
+* `destination`: The target node.
+* `grp`: The graph.
+* `vis`: The set of visited nodes for the current DFS path.
+* `ans`: A `double[]` array of size 1. This is a common pattern in Java to allow a recursive function to update a value that's visible to its caller, effectively passing by reference. `ans[0]` stores the found result, initialized to `-1.0`.
+* `temp`: The accumulated product from the starting node to the current `node`.
+
+1.  **Base Cases:**
+    * If `node` is already in `vis`, it means we've encountered a cycle. Return immediately to avoid infinite recursion.
+    * Mark `node` as visited (`vis.add(node)`).
+    * If `node` is equal to `destination`, we've found a path! Set `ans[0] = temp` and return.
+
+2.  **Recursive Step:**
+    * Iterate through all neighbors of `node` (i.e., `grp.get(node).entrySet()`).
+    * For each `neighbor` and its `edgeWeight`:
+        * Recursively call `dfs(neighbor, destination, grp, vis, ans, temp * edgeWeight)`.
+        * **Optimization:** After the recursive call, check if `ans[0]` is no longer `-1.0`. If it's been updated, it means a path to the destination has been found through one of the neighbors. In this case, we can stop further exploration from the current `node` and return early, as we already have our answer. This is important because there might be multiple paths, but any path will yield the same correct result if the graph is consistent.
+
+**Why not other approaches?**
+
+* **Why not just store equations and solve mathematically?**
+    * Directly solving equations for complex relationships (e.g., `a/b, b/c, c/d` to find `a/d`) becomes cumbersome. Graph traversal naturally handles chaining relationships.
+* **Why not BFS?**
+    * BFS could also be used. Instead of accumulating the product in `temp` during recursion, you would store the cumulative product in the queue along with the current node. Both DFS and BFS are valid graph traversal algorithms for this problem. DFS is often simpler to implement recursively, which fits the current solution structure. The choice between DFS and BFS often depends on whether you need the shortest path (BFS) or just *any* path (DFS). Here, any path is sufficient.
+* **Why a graph and not just a direct mapping for all possible pairs?**
+    * The number of possible pairs can be very large ($N^2$ where N is the number of unique variables), making pre-computation of all pairs inefficient for large inputs. Building the graph and querying as needed is more memory and time efficient.
+
+Complexity Analysis:
+
+Let `N` be the number of equations, `M` be the number of queries, and `V` be the number of unique variables (nodes in the graph).
+Let `E` be the number of edges in the graph. In our case, for each equation, we add two edges, so `E = 2 * N`.
+
+* **Time Complexity:**
+    * **`buildGraph` function:**
+        * We iterate through `N` equations. For each equation, we perform constant time operations (HashMap `putIfAbsent` and `put`).
+        * In the worst case, `putIfAbsent` and `put` operations on a HashMap can take $O(L)$ time, where $L$ is the average length of strings, due to hashing. Assuming constant time for string hashing, this is $O(1)$.
+        * Therefore, `buildGraph` takes $O(N)$.
+    * **`calcEquation` function (main loop):**
+        * We iterate through `M` queries.
+        * For each query, we perform a DFS.
+        * **DFS Complexity:** In the worst case, a DFS can visit all `V` nodes and traverse all `E` edges in the graph. So, a single DFS takes $O(V + E)$ time.
+        * Therefore, the total time for `calcEquation` is $O(N + M * (V + E))$.
+        * Since $E = 2N$, this can be simplified to $O(N + M * (V + N))$.
+        * In typical competitive programming scenarios, $V$ can be at most $2N$ (if all equations introduce new variables). So, $V$ and $E$ are roughly proportional to $N$.
+        * Thus, the overall time complexity is approximately $O(N + M \times N)$.
+
+* **Space Complexity:**
+    * **`grp` (Graph):** The graph stores `V` nodes. Each node can have up to `V-1` connections in the worst case (dense graph). However, since each equation adds only two connections, the total number of edges stored is `2N`. The space is proportional to the number of nodes and edges.
+        * $O(V + E)$ or $O(V + N)$ due to the adjacency list representation.
+    * **`vis` (Visited Set):** In the worst case, during a DFS, the `visited` set can store up to `V` nodes. So, $O(V)$.
+    * **Recursion Stack:** The depth of the recursion stack for DFS can go up to `V` in the worst case (a long linear path). So, $O(V)$.
+    * **`res` (Result Array):** $O(M)$ to store query results.
+    * Combining these, the overall space complexity is $O(V + N + M)$. Since $V$ is at most $2N$, this is effectively $O(N + M)$.
+*/

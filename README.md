@@ -65,7 +65,12 @@ This repository contains a collection of my solutions to Data Structures and Alg
 | 2025-06-16 | Merge Two Sorted Lists (REDD) (Leetcode -21)     | LinkedList              |
 | 2025-06-16 | Add Two Numbers (Leetcode -2)                    | LinkedList              |
 |            | ... Day 15...                                    |                         |
-| 2025-06-17 | Reverse Linked List (Leetcode -206)              | LinkedList              |
+| 2025-06-17 | Reorder List (Leetcode -143)                     | LinkedList              |
+| 2025-06-17 | Linked List Cycle (REDD) (Leetcode -141)         | LinkedList              |
+|            | ... Day 16...                                    |                         |
+| 2025-06-18 | Find the Duplicate Number (Leetcode -287)        | LinkedList  (Floyd's Cycle Detection)            |
+|            | ... Day 17...                                    |                         |
+| 2025-06-18 | Reverse Linked List II (Leetcode -92)            | LinkedList              |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate

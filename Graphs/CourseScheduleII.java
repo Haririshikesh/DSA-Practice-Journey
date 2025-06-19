@@ -73,9 +73,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Arrays; // For printing arrays in main
 
-class Solution {
+class CourseScheduleII {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         // 1. Build Adjacency List (adj) and In-degrees (indegree)
         int[] indegree = new int[numCourses];

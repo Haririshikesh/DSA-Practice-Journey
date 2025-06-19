@@ -68,9 +68,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Arrays; // For printing arrays in main (if needed)
 
-class Solution {
+class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         // 1. Build Adjacency List (deps) and In-degrees
         int[] indegree = new int[numCourses];

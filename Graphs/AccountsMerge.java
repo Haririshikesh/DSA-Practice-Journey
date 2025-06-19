@@ -108,9 +108,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Arrays; // Only for main method printing
 
-class Solution {
+class AccountsMerge {
 
     // Inner class for Union-Find data structure
     class UnionFind {
