@@ -70,7 +70,13 @@ This repository contains a collection of my solutions to Data Structures and Alg
 |            | ... Day 16...                                    |                         |
 | 2025-06-18 | Find the Duplicate Number (Leetcode -287)        | LinkedList  (Floyd's Cycle Detection)            |
 |            | ... Day 17...                                    |                         |
-| 2025-06-18 | Reverse Linked List II (Leetcode -92)            | LinkedList              |
+| 2025-06-19 | Copy List with Random Pointer (Leetcode -138)    | LinkedList              |
+|            | ... Day 18...                                    |                         |
+| 2025-06-20 | Design Circular Queue (Leetcode -622)            | LinkedList              |
+| 2025-06-20 | Remove Nth Node From End of List (Leetcode -19)  | LinkedList              |
+|            | ... Day 19...                                    |                         |
+| 2025-06-24 | LRU Cache (Leetcode -146)                        | LinkedList              |
+| 2025-06-24 | LFU Cache (Leetcode -460)                        | LinkedList              |
 | ...        | ...                                              | ...                     |
 
 ## How to Use/Navigate
